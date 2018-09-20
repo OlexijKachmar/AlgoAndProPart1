@@ -1,0 +1,6 @@
+﻿  ConsoleApplication1.cpp
+c:\users\алекс\desktop\універ\лаби з програмування\algoandpropart1\consoleapplication1\consoleapplication1.cpp(15): warning C4305: инициализация: усечение из "double" в "float"
+  variant8.cpp
+c:\users\алекс\desktop\універ\лаби з програмування\algoandpropart1\consoleapplication1\variant8.cpp(20): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+  Создание кода...
+  ConsoleApplication1.vcxproj -> C:\Users\алекс\Desktop\Універ\Лаби з програмування\AlgoAndProPart1\x64\Debug\ConsoleApplication1.exe

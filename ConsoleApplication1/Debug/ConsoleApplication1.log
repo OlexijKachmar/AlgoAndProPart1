@@ -1,4 +1,0 @@
-﻿  ConsoleApplication1.cpp
-d:\consoleapplication1\consoleapplication1\consoleapplication1.cpp(18): warning C4477: "printf": в строке форматирования "%f" требуется аргумент типа "double", но вариативный аргумент "1" имеет тип "int"
-d:\consoleapplication1\consoleapplication1\consoleapplication1.cpp(21): warning C4477: "printf": в строке форматирования "%f" требуется аргумент типа "double", но вариативный аргумент "1" имеет тип "const char *"
-  ConsoleApplication1.vcxproj -> D:\ConsoleApplication1\Debug\ConsoleApplication1.exe
