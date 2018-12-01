@@ -1,0 +1,156 @@
+
+//8.	Структура "Покупець":
+//-прізвище, ім'я, по батькові;
+//- домашня адреса;
+//-номер телефону;
+//-номер кредитної картки.
+//Знищити 3 елементи з початку файлу, додати 3 елементи в кінець файлу.
+//3. 	Текст функцій для :
+//•	формування файлу,
+//•	друку файлу,
+//•	додавання запису у файл,
+//•	знищення запису з файлу
+//•	пошуку структури для знищення.
+
+#include"pch.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "Laba8.1.h"
+#pragma warning(disable:4996)
+//умовна к-сть структур
+const int AMOUNT_OF_STRUCT = 4;
+
+typedef struct customer
+{
+
+	char surname[20];
+	char name[20];
+	char pobatkovi[20];
+	char homeAdress[20];
+	char phoneNumber[20];
+	char creditNumber[20];
+
+};
+
+//зафілюю структури
+customer fillStruct()
+{
+	customer buyer;
+	printf("Surname:\t"); scanf("%s", &buyer.surname);
+	printf("Name:\t"); scanf("%s", &buyer.name);
+	printf("Pobatkovi:\t"); scanf("%s", &buyer.pobatkovi);
+	printf("Home Adress:\t"); scanf("%s", &buyer.homeAdress);
+	printf("Phone Number:\t"); scanf("%s", &buyer.phoneNumber);
+	printf("Number of credit card:\t"); scanf("%s", &buyer.creditNumber);
+	return buyer;
+}
+
+
+void writeStructToFile(customer structArray[AMOUNT_OF_STRUCT], int numberOfStructures, const char*file)
+{
+	int numberOfCallingTheFunction = 0;
+	FILE *f;
+	if (numberOfCallingTheFunction == 0 || numberOfCallingTheFunction == 1)
+	{
+		f = fopen(file, "w+b");
+	}
+	else
+	{
+		f = fopen(file, "a");
+	}
+	if (f == NULL)
+	{
+		printf("File wasn't opened correctly");
+		exit(1);
+	}
+	for (int i = 0; i < numberOfStructures; i++)
+	{
+		fwrite(&structArray[i], sizeof(customer), 1, f);
+	}
+	fclose(f);
+}
+
+void fileRead(customer structArray[AMOUNT_OF_STRUCT], const char*file)
+{
+	FILE *f; int i = 0;
+	while (!feof(f) && i < AMOUNT_OF_STRUCT)
+	{
+
+	}
+}
+//customer searchStructuresToDelete(customer structureArray[AMOUNT_OF_STRUCT],customer structureArray2[3])
+//{
+//	for (int i = 0; i < 3; i++)
+//	{
+//		structureArray2[i] = structureArray[i];
+//	}
+//	return structureArray2[3];
+//}
+int structureToDelete = 3;
+//видалення структури
+customer Delete(customer structureArray1[AMOUNT_OF_STRUCT], customer structureArray[AMOUNT_OF_STRUCT])
+{
+	int structureToLeave = AMOUNT_OF_STRUCT - 3;
+	for (int i = 0; i < structureToLeave; i++)
+	{
+		structureArray1[i] = structureArray[structureToDelete + i];
+	}
+	void writeStructToFile(structureArray[structureToLeave], structureToLeave, "f.txt");
+	return structureArray1[structureToLeave];
+}
+
+//додавання структури
+customer addElementsToBuffer(customer structureArray[AMOUNT_OF_STRUCT], customer structureArray1[AMOUNT_OF_STRUCT])
+{
+	int j = 0;
+	for (int i = AMOUNT_OF_STRUCT - 3; i < AMOUNT_OF_STRUCT; i++)
+	{
+		structureArray1[i] = structureArray[j];
+		j++;
+	}
+	void writeStructToFile(structureArray[structureToDelete], j, "f.txt");
+	return structureArray1[structureToDelete];
+}
+
+void main()
+{
+
+	customer structureArray[AMOUNT_OF_STRUCT];
+	customer structureArray1[AMOUNT_OF_STRUCT];
+
+	for (int i = 0; i < AMOUNT_OF_STRUCT; i++)
+	{
+		printf("CUSTOMER:\n");
+		structureArray[i] = fillStruct();
+
+	}
+	writeStructToFile(structureArray, 4, "f.txt");
+	//вивід введених структур
+	/*for (int i = 0; i < AMOUNT_OF_STRUCT; i++)
+	{
+	printf("surname - %s\n", structureArray[i].surname);
+	printf("name - %s\n", structureArray[i].name);
+	printf("pobatkovi - %s\n", structureArray[i].pobatkovi);
+	printf("Home adress - %s\n", structureArray[i].homeAdress);
+	printf("Phone number - %s\n", structureArray[i].phoneNumber);
+	printf("Number of credit card - %s\n", structureArray[i].creditNumber);
+	printf("\n");
+	}*/
+	fileRead(structureArray, "f.txt");
+	Delete(structureArray1, structureArray);
+	addElementsToBuffer(structureArray, structureArray1);
+	//вивід зміненого порядку структур
+	for (int i = 0; i < AMOUNT_OF_STRUCT; i++)
+	{
+		printf("surname - %s\n", structureArray1[i].surname);
+		printf("name - %s\n", structureArray1[i].name);
+		printf("pobatkovi - %s\n", structureArray1[i].pobatkovi);
+		printf("Home adress - %s\n", structureArray1[i].homeAdress);
+		printf("Phone number - %s\n", structureArray1[i].phoneNumber);
+		printf("Number of credit card - %s\n", structureArray1[i].creditNumber);
+		printf("\n");
+	}
+
+}
+
